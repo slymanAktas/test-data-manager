@@ -69,3 +69,17 @@ export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/14/bin
  pip3 install postgres
  pip3 install psycopg2
 ```
+
+**Yeni Servis Eklenmesi**
+
+1) `tdm/flask_app/all_services` altına yeni servis grubu eklenir. Örn: `tdm/flask_app/all_services/visitor_servise`
+2) Eklenilen servisin routes.py ve utils.py class'ları implemente edilir.
+3) Eklenen servis swagger'da listelenebilmesi için
+   `tdm/flask_app/all_services/visitor_service/swagger_yml_files/create_visitor.yml` .yml implementasyonu yapılır.
+4) Eklenen yeni servisin blueprint registration'u yapılmalıdır.
+   `tdm/flask_app/all_services/__init__.py` içerisinde yer alan create_app methodu içine eklemeyi unutmayalım
+   ```
+   def create_app():
+    from tdm.flask_app.all_services.common_service.routes import common_service
+    app.register_blueprint(common_service)
+   ```
