@@ -1,0 +1,22 @@
+tags:
+  - SQL Service
+parameters:
+  - in: query
+    name: env
+    description: Which environment
+    required: true
+    enum: [qa, test, st]
+  - in: query
+    name: camelCase
+    description: Has sql field camelCase?
+    required: false
+    enum: [false, true]
+    default: false
+  - in: query
+    name: sql
+    description: sql
+    required: true
+responses:
+  200:
+    description: "Success"
+

@@ -1,0 +1,18 @@
+QA_N11 =
+    (DESCRIPTION=
+        (ADDRESS=(PROTOCOL=tcp)(HOST=host.name.qa)(PORT=1523))
+        (CONNECT_DATA= (SERVICE_NAME=serviceName))
+    )
+TEST_N11 =
+    (DESCRIPTION=
+        (ADDRESS=(PROTOCOL=tcp)(HOST=host.name.test)(PORT=1523))
+        (CONNECT_DATA= (SERVICE_NAME=serviceName))
+    )
+ST_N11 =
+    (DESCRIPTION=
+        (ADDRESS=(PROTOCOL=tcp)(HOST=host.name.st)(PORT=1523))
+        (CONNECT_DATA= (SERVICE_NAME=serviceName))
+    )
+
+
+

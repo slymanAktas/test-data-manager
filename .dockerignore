@@ -1,0 +1,3 @@
+# .dockerignore is something we did to prevent cache and venv folders from coming
+env/
+__pycache__/

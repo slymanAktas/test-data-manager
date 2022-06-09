@@ -1,0 +1,60 @@
+version: "3"
+
+volumes:
+  pgdata:
+
+networks:
+  tauto:
+    driver: bridge
+
+services:
+  tdm_api:
+    build:
+      context: .
+      dockerfile: docker/tdm/Dockerfile
+    #    container_name: tdm_api
+    restart: always
+    environment:
+      - APP_NAME=test-data-manager
+    networks:
+      - tauto
+    volumes:
+      - ./tdm:/tdm
+
+  nginx:
+    build:
+      context: .
+      dockerfile: docker/nginx/Dockerfile
+    container_name: nginx
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - tdm_api
+    networks:
+      - tauto
+
+  db:
+    image: postgres:10.3
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+      POSTGRES_PASS: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - 5433:5432
+    networks:
+      - tauto
+
+  portainer:
+    image: portainer/portainer
+    container_name: portainer
+    ports:
+      - 9000:9000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
+
+
+

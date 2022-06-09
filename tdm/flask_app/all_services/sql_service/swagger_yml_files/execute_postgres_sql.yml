@@ -1,0 +1,11 @@
+tags:
+  - SQL Service
+parameters:
+  - in: query
+    name: sql
+    description: sql
+    required: true
+responses:
+  200:
+    description: "Success"
+
